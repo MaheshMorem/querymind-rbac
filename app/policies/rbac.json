@@ -1,0 +1,33 @@
+{
+  "admin": {
+    "tables": {
+      "*": { "allow": true }
+    }
+  },
+
+  "vendor": {
+    "tables": {
+      "products": {
+        "row_filters": [
+          { "column": "vendor_id", "type": "vendor_id" }
+        ]
+      },
+      "orders": {
+        "via": ["order_items", "products"]
+      }
+    }
+  },
+
+  "buyer": {
+    "tables": {
+      "orders": {
+        "row_filters": [
+          { "column": "user_id", "type": "user_id" }
+        ]
+      },
+      "payments": {
+        "via": "orders"
+      }
+    }
+  }
+}
